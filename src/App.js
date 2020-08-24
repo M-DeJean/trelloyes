@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from 'react-dom';
+import STORE from './store';
+import Card from './card';
+import List from '.list';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+function App(props) {
 
-export default App;
+
+
+    // If you have an array as an input, you can map over it to
+    // create child components
+    const people = peopleData.map(person =>
+        <Person key={person.id} name={person.name} />
+    );
+
+    return (
+        <div className="personList">
+            <h3>Person List</h3>
+            {people}
+        </div>
+    );
+};
+
+export default App
