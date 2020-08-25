@@ -1,19 +1,34 @@
-import React from 'react';
-//import Card from './card';
-//import List from '.list';
+import React, { Component } from 'react';
+import List from './List';
+import './App.css';
+class App extends Component {
+    static defaultProps = {
+        store: {
+            lists: [],
+            allCards: {},
+        }
+    };
 
-function App(props) {
-    console.log(props);
+    render() {
+        const { store } = this.props
+        return (
+            <main className='App'>
+                <header className='App-header'>
+                    <h1>Trelloyes!</h1>
+                </header>
+                <div className='App-list'>
+                    {store.lists.map(list => (
+                        <List
+                            key={list.id}
+                            header={list.header}
+                            cards={list.cardIds.map(id => store.allCards[id])}
+                        />
+                    ))}
+                </div>
+            </main>
+        );
+    }
+}
 
+export default App;
 
-    // If you have an array as an input, you can map over it to
-    // create child components
-    
-    return (
-        <div className="personList">
-            <h3>Person List</h3>
-        </div>
-    );
-};
-
-export default App
